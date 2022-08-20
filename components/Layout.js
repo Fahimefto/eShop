@@ -28,7 +28,7 @@ export default function Layout({ title, children }) {
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
         <footer className="flex h-10 justify-center item-center shadow-transparent">
-          Footer Sec
+          Developed by Fahim Iftekhar Efto
         </footer>
       </div>
     </>
