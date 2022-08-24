@@ -10,7 +10,8 @@ const data = {
       rating: 4.5,
       numReviewers: 8,
       instock: 20,
-      description: "A comfortable Shirt",
+      description:
+        "A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. ",
     },
     {
       name: "yellow Shirt",
@@ -33,7 +34,7 @@ const data = {
       brand: "freeland",
       rating: 4.5,
       numReviewers: 8,
-      instock: 20,
+      instock: 0,
       description: "A comfortable Shirt",
     },
     {

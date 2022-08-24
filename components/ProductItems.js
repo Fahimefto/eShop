@@ -23,7 +23,7 @@ export default function ProductItems({ product }) {
         <p className="mb-2 font-serif">{product.brand}</p>
         <p>BDT: {product.price}</p>
         <button
-          className="primary-button bg-indigo-500 py-2 px-3 mt-3 shadow outline-none hover:bg-indigo-700 rounded-md active:bg-indigo-800"
+          className="primary-button bg-green-600 py-2 px-3 mt-3 shadow outline-none hover:bg-green-700 rounded-md active:bg-green-800"
           type="button"
         >
           Add to cart

@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .card {
-  @apply mr-5 mb-5 block rounded-lg border border-gray-200 shadow-md;
+  @apply m-3  block rounded-lg border border-gray-200 shadow-md;
 }
