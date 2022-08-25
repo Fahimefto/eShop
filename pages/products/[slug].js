@@ -1,12 +1,14 @@
 import Layout from "../../components/Layout";
 import data from "../../data/data";
-
+import { useContext } from "react";
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import { Store } from "../../hooks/Store";
 
 export default function ProductDetails() {
+  const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
   const { slug } = query;
   const product = data.products.find((x) => x.slug === slug);
@@ -17,6 +19,15 @@ export default function ProductDetails() {
       </div>
     );
   }
+  const addCartHandler = () => {
+    const existItems = state.cart.CartItems.find((x) => x.slug === slug);
+    const quantity = existItems ? existItems.quantity + 1 : 1;
+    if (product.instock < quantity) {
+      alert("No more in stock");
+    }
+    dispatch({ type: "ADD_ITEM", payload: { ...product, quantity } });
+  };
+
   return (
     <Layout title={product.name}>
       <div className="py-2">
@@ -26,7 +37,7 @@ export default function ProductDetails() {
           </a>
         </Link>
       </div>
-      <div className="grid md:grid-cols-3 md:gap-3 shadow-2xl">
+      <div className="grid md:grid-cols-3 md:gap-3 shadow-2xl mt-5">
         <div className="md:col-span-2 shadow-xl xl:col-span-1">
           <Image
             src={product.image}
@@ -64,7 +75,10 @@ export default function ProductDetails() {
                 )}
               </div>
             </div>
-            <button className="bg-green-600 hover:bg-green-700 rounded-md p-2 mt-2 w-full">
+            <button
+              className="bg-green-600 hover:bg-green-700 rounded-md p-2 mt-2 w-full"
+              onClick={addCartHandler}
+            >
               Add to cart
             </button>
           </div>

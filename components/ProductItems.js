@@ -20,10 +20,10 @@ export default function ProductItems({ product }) {
             <h2 className="text-lg font-bold">{product.name}</h2>
           </a>
         </Link>
-        <p className="mb-2 font-serif">{product.brand}</p>
-        <p>BDT: {product.price}</p>
+        <p className="mb-2 text-sm">{product.brand}</p>
+        <p className="font-sans text-xs font-bold">{product.price} BDT</p>
         <button
-          className="primary-button bg-green-600 py-2 px-3 mt-3 shadow outline-none hover:bg-green-700 rounded-md active:bg-green-800"
+          className="primary-button bg-green-500 py-1 font-serif px-3 mt-3 shadow-2xl outline-none hover:bg-green-700 rounded-md active:bg-green-800"
           type="button"
         >
           Add to cart

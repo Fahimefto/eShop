@@ -10,11 +10,10 @@ const data = {
       rating: 4.5,
       numReviewers: 8,
       instock: 20,
-      description:
-        "A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. A comfortable Shirt. ",
+      description: " A comfortable Shirt. A comfortable Shirt. ",
     },
     {
-      name: "yellow Shirt",
+      name: "Yellow Shirt",
       slug: "yellow-shirt",
       category: "Shirt",
       image: "/images/shirt1.jpeg",
@@ -50,7 +49,7 @@ const data = {
       description: "A comfortable Shirt",
     },
     {
-      name: "green Shirt",
+      name: "Green Shirt",
       slug: "green-shirt",
       category: "Shirt",
       image: "/images/shirt3.jpeg",
@@ -62,7 +61,7 @@ const data = {
       description: "A comfortable Shirt",
     },
     {
-      name: "purple Shirt",
+      name: "Purple Shirt",
       slug: "purple-shirt",
       category: "Shirt",
       image: "/images/shirt2.jpeg",
