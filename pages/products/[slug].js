@@ -2,7 +2,7 @@ import Layout from "../../components/Layout";
 import data from "../../data/data";
 import { useContext } from "react";
 import React from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../hooks/Store";
@@ -26,6 +26,7 @@ export default function ProductDetails() {
       alert("No more in stock");
     }
     dispatch({ type: "ADD_ITEM", payload: { ...product, quantity } });
+    Router.push("/cart");
   };
 
   return (

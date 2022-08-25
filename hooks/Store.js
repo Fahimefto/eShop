@@ -21,6 +21,12 @@ function reducer(state, action) {
         : [...state.cart.CartItems, newItems];
       return { ...state, cart: { ...state.cart, CartItems } };
     }
+    case "REMOVE_ITEM": {
+      const CartItems = state.cart.CartItems.filter(
+        (item) => item.slug !== action.payload.slug
+      );
+      return { ...state, cart: { ...state.cart, CartItems } };
+    }
     default:
       return state;
   }
