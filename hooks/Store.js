@@ -1,10 +1,13 @@
 import { createContext, useReducer } from "react";
+import Cookies from "js-cookie";
 
 export const Store = createContext();
 const initialState = {
-  cart: {
-    CartItems: [],
-  },
+  cart: Cookies.get("cart")
+    ? JSON.parse(Cookies.get("cart"))
+    : {
+        CartItems: [],
+      },
 };
 
 function reducer(state, action) {
@@ -19,12 +22,14 @@ function reducer(state, action) {
             item.name === existItems.name ? newItems : item
           )
         : [...state.cart.CartItems, newItems];
+      Cookies.set("cart", JSON.stringify({ ...state.cart, CartItems }));
       return { ...state, cart: { ...state.cart, CartItems } };
     }
     case "REMOVE_ITEM": {
       const CartItems = state.cart.CartItems.filter(
         (item) => item.slug !== action.payload.slug
       );
+      Cookies.set("cart", JSON.stringify({ ...state.cart, CartItems }));
       return { ...state, cart: { ...state.cart, CartItems } };
     }
     default:
@@ -37,4 +42,3 @@ export function StoreProvider({ children }) {
   const value = { state, dispatch };
   return <Store.Provider value={value}> {children}</Store.Provider>;
 }
-

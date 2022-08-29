@@ -4,8 +4,9 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import { Store } from "../hooks/Store";
+import dynamic from "next/dynamic";
 
-export default function cartScreen() {
+function cartScreen() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -130,3 +131,5 @@ export default function cartScreen() {
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(cartScreen), { ssr: false });
