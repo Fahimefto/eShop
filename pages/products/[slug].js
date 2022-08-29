@@ -49,9 +49,9 @@ export default function ProductDetails() {
           ></Image>
         </div>
         <div>
-          <ul className="m-5  text-center">
-            <li>Name: {product.name}</li>
-            <li>category : {product.category}</li>
+          <ul className="m-5  text-left">
+            <li className="mb-1 font-bold">Name: {product.name}</li>
+            <li>Category : {product.category}</li>
             <li>Brand :{product.brand}</li>
             <li>
               Reviews :{product.rating} of {product.numReviewers} reviews
