@@ -1,16 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import { Store } from "../hooks/Store";
 
 export default function cartScreen() {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
     cart: { CartItems },
   } = state;
   const removeItem = (item) => {
     dispatch({ type: "REMOVE_ITEM", payload: item });
+  };
+
+  const updateHandler = (item, qnt) => {
+    const quantity = Number(qnt);
+    dispatch({ type: "ADD_ITEM", payload: { ...item, quantity } });
   };
   return (
     <Layout title="Cart">
@@ -62,7 +69,18 @@ export default function cartScreen() {
                           </a>
                         </Link>
                       </td>
-                      <td className="p-5 text-left">{item.quantity}</td>
+                      <td className="p-5 text-left">
+                        <select
+                          value={item.quantity}
+                          onChange={(e) => updateHandler(item, e.target.value)}
+                        >
+                          {[...Array(item.instock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
                       <td className="p-5 text-left">{item.price} BDT</td>
                       <td className="p-5 text-left">
                         <button onClick={() => removeItem(item)}>
@@ -91,13 +109,16 @@ export default function cartScreen() {
               <ul>
                 <li>
                   <div className="pb-5 font-bold">
-                    Subtotal ({CartItems.reduce((a, c) => a + c.quantity, 0)}) :
+                    Subtotal ({CartItems.reduce((a, c) => a + c.quantity, 0)}) :{" "}
                     {CartItems.reduce((a, c) => a + c.quantity * c.price, 0)}{" "}
                     BDT
                   </div>
                 </li>
                 <li>
-                  <button className="p-2 bg-green-500 w-full rounded-md">
+                  <button
+                    className="p-2 bg-green-500 w-full rounded-md"
+                    onClick={() => router.push("/shiping")}
+                  >
                     Check Out
                   </button>
                 </li>
