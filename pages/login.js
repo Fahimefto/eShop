@@ -2,16 +2,63 @@ import Link from "next/link";
 import React from "react";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
+import { useSession, signIn } from "next-auth/react";
+import { Router, useRouter } from "next/router";
+import { useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { getError } from "../error";
 
 export default function login() {
+  const { data: session } = useSession();
+
+  const router = useRouter();
+  const { redirect } = router.query;
+
+  useEffect(() => {
+    console.log(session);
+    if (session?.session.user) {
+      router.push(redirect || "/");
+    }
+  }, [router, session, redirect]);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const submit = ({ email, password }) => {};
+
+  const submit = async ({ email, password }) => {
+    console.log(register);
+
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      console.log(result);
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(result.error));
+    }
+  };
   return (
     <Layout title="Login">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
       <form
         className="mx-auto max-w-screen-md p-10 shadow-xl mt-5 rounded-lg"
         onSubmit={handleSubmit(submit)}

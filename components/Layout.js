@@ -3,8 +3,10 @@ import Link from "next/link";
 import React from "react";
 import { Store } from "../hooks/Store";
 import { useContext, useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Layout({ title, children }) {
+  const { status, data: session } = useSession();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
   const [CartCount, setCartCount] = useState(0);
@@ -30,15 +32,22 @@ export default function Layout({ title, children }) {
                 <a className="text-md p-2">
                   Cart
                   {CartCount > 0 && (
-                    <spn className="rounded-full ml-1 p-1 px-2 font-bold text-xs bg-red-500">
+                    <span className="rounded-full ml-1 p-1 px-2 font-bold text-xs bg-red-500">
                       {CartCount}
-                    </spn>
+                    </span>
                   )}
                 </a>
               </Link>
-              <Link href="/login">
-                <a className="text-md p-2">Login</a>
-              </Link>
+
+              {status === "loading" ? (
+                "Loading"
+              ) : session?.session.user ? (
+                session.session.user.name
+              ) : (
+                <Link href="/login">
+                  <a className="text-md p-2">Login</a>
+                </Link>
+              )}
             </div>
           </nav>
         </header>
