@@ -5,3 +5,7 @@
 .card {
   @apply m-3  block rounded-lg border border-gray-200 shadow-md;
 }
+
+.dropdown-link {
+  @apply p-2 hover:bg-green-300 rounded-md;
+}
