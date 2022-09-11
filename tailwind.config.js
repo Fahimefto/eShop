@@ -5,7 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        body: ["Josefin Sans"],
+        mon: ["Montserrat"],
+        pop: ["Poppins"],
+      },
+    },
   },
   plugins: [],
 };
