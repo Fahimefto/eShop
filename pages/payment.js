@@ -26,7 +26,7 @@ export default function payment() {
       "cart",
       JSON.stringify({ ...cart, paymentMethod: selectedPaymentMethod })
     );
-    router.push("placeorder");
+    router.push("/placeorder");
     console.log(selectedPaymentMethod);
   };
 

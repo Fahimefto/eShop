@@ -1,22 +1,24 @@
 import Layout from "../../components/Layout";
-import data from "../../data/data";
+
 import { useContext } from "react";
 import React from "react";
 import Router, { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../hooks/Store";
+import db from "../../db";
+import Product from "../../models/Product";
 
-export default function ProductDetails() {
+export default function ProductDetails({ product }) {
   const { state, dispatch } = useContext(Store);
-  const { query } = useRouter();
-  const { slug } = query;
-  const product = data.products.find((x) => x.slug === slug);
+
   if (!product) {
     return (
-      <div className="p-5 text-center mt-5 bg-red-300">
-        <h1 className="text-xl font-bold text-gray-900">No data found </h1>
-      </div>
+      <Layout title="Not Found">
+        <div className="p-5 text-center mt-5 bg-red-300">
+          <h1 className="text-xl font-bold text-gray-900">No data found </h1>
+        </div>
+      </Layout>
     );
   }
   const addCartHandler = () => {
@@ -87,4 +89,17 @@ export default function ProductDetails() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { slug } = params;
+  await db.connect();
+  const product = await Product.findOne({ slug: slug }).lean();
+  await db.disconnect();
+  return {
+    props: {
+      product: product ? db.convertDocToObj(product) : null,
+    },
+  };
 }

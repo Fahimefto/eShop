@@ -7,9 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Josefin Sans"],
-        mon: ["Montserrat"],
-        pop: ["Poppins"],
+        cairo: ["Cairo", "sans-serif"],
       },
     },
   },
