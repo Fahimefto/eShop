@@ -1,14 +1,14 @@
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 
-export default function unauthorized() {
+export default function Unauthorized() {
   const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
       router.push("/login");
     }, 4000);
-  }, []);
+  }, [router]);
 
   return (
     <Layout title="Unauthorized">

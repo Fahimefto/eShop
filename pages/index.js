@@ -1,5 +1,3 @@
-import Head from "next/head";
-import { Router, useRouter } from "next/router";
 import { useContext } from "react";
 import Layout from "../components/Layout";
 import ProductItems from "../components/ProductItems";
@@ -11,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 export default function Home({ products }) {
   const { state, dispatch } = useContext(Store);
-  const router = useRouter();
+
   const addCartHandler = async (product) => {
     const existItems = state.cart.CartItems.find(
       (x) => x.slug === product.slug

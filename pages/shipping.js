@@ -1,14 +1,12 @@
-import React from "react";
 import Checkout from "../components/Checkout";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Cookies from "js-cookie";
 import { Store } from "../hooks/Store";
-import cart from "./cart";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
-export default function shipping() {
+export default function Shipping() {
   const router = useRouter();
   const {
     register,
@@ -147,4 +145,4 @@ export default function shipping() {
   );
 }
 
-shipping.auth = true;
+Shipping.auth = true;

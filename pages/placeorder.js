@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import Checkout from "../components/Checkout";
 import { Store } from "../hooks/Store";
@@ -6,11 +6,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import toast, { Toaster } from "react-hot-toast";
-import { getError } from "../error";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-export default function placeorder() {
+export default function Placeorder() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
@@ -181,4 +180,4 @@ export default function placeorder() {
     </>
   );
 }
-placeorder.auth = true;
+Placeorder.auth = true;

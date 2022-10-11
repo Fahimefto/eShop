@@ -1,5 +1,4 @@
 import { getSession } from "next-auth/react";
-
 import Order from "../../../models/Order";
 import db from "../../../db";
 
@@ -11,7 +10,7 @@ const handler = async (req, res) => {
     return res.status(401).json("signin required");
   }
   console.log(session);
-  const { user } = session;
+
   await db.connect();
 
   const newOrder = new Order({

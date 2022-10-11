@@ -1,15 +1,13 @@
-import React from "react";
 import Layout from "../components/Layout";
 import Checkout from "../components/Checkout";
 import { useState, useContext, useEffect } from "react";
 import { Store } from "../hooks/Store";
 import jsCookie from "js-cookie";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function payment() {
+export default function Payment() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const { state, dispatch } = useContext(Store);
   const { cart } = state;
@@ -35,7 +33,7 @@ export default function payment() {
       return router.push("/shipping");
     }
     setSelectedPaymentMethod(paymentMethod || "");
-  }, [paymentMethod, router, shippingAdress.adress]);
+  }, [paymentMethod, router, shippingAdress]);
 
   return (
     <>
@@ -87,4 +85,4 @@ export default function payment() {
     </>
   );
 }
-payment.auth = true;
+Payment.auth = true;

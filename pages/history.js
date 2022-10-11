@@ -1,6 +1,6 @@
 import axios from "axios";
 import Link from "next/link";
-import React, { useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import Layout from "../components/Layout";
 import { getError } from "../error";
 
@@ -16,7 +16,7 @@ function reducer(state, action) {
       return state;
   }
 }
-function history() {
+function History() {
   const [{ loading, error, orders }, dispatch] = useReducer(reducer, {
     loading: true,
     orders: [],
@@ -87,5 +87,5 @@ function history() {
     </Layout>
   );
 }
-history.auth = true;
-export default history;
+History.auth = true;
+export default History;

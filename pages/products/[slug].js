@@ -1,8 +1,7 @@
 import Layout from "../../components/Layout";
 import axios from "axios";
 import { useContext } from "react";
-import React from "react";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import Link from "next/link";
 import Image from "next/image";
 import { Store } from "../../hooks/Store";
@@ -13,7 +12,6 @@ import toast, { Toaster } from "react-hot-toast";
 export default function ProductDetails(props) {
   const { product } = props;
   const { state, dispatch } = useContext(Store);
-  const router = useRouter();
 
   if (!product) {
     return (

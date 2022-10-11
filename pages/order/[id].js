@@ -1,14 +1,10 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import Layout from "../../components/Layout";
-import Checkout from "../../components/Checkout";
-import { Store } from "../../hooks/Store";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
-import toast, { Toaster } from "react-hot-toast";
 import { getError } from "../../error";
 import axios from "axios";
-import Cookies from "js-cookie";
 
 function reducer(state, action) {
   switch (action.type) {

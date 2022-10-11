@@ -1,15 +1,14 @@
 import Link from "next/link";
-import React from "react";
 import Layout from "../components/Layout";
 import { useForm } from "react-hook-form";
 import { useSession, signIn } from "next-auth/react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getError } from "../error";
 
-export default function login() {
+export default function Login() {
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -37,12 +36,12 @@ export default function login() {
         email,
         password,
       });
-      console.log(result);
+
       if (result.error) {
         toast.error(result.error);
       }
     } catch (err) {
-      toast.error(getError(result.error));
+      toast.error(getError(err));
     }
   };
   return (
@@ -103,7 +102,7 @@ export default function login() {
           <div className="text-bold">
             <Link href={`/register?redirect=${redirect || "/"}`}>
               <a className="text-green-800 font-bold">
-                Don't have any Account? Register Account
+                Don&apos;t have any Account? Register Account
               </a>
             </Link>
           </div>
