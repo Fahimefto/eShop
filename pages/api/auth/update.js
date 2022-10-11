@@ -5,12 +5,12 @@ import db from "../../../db";
 
 async function handler(req, res) {
   if (req.method !== "PUT") {
-    return res.status(400).send({ message: `${req.method} not supported` });
+    return res.json({ message: `${req.method} not supported` });
   }
 
   const session = await getSession({ req });
   if (!session) {
-    return res.status(401).send({ message: "signin required" });
+    return res.json({ message: "signin required" });
   }
 
   const { name, email, password } = req.body;
@@ -21,7 +21,7 @@ async function handler(req, res) {
     !email.includes("@") ||
     (password && password.trim().length < 5)
   ) {
-    res.status(422).json({
+    res.json({
       message: "Validation error",
     });
     return;

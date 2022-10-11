@@ -14,7 +14,7 @@ async function handler(req, res) {
     !password ||
     password.trim().length < 5
   ) {
-    res.status(422).json({
+    res.json({
       message: "Validation error",
     });
     return;
@@ -24,7 +24,7 @@ async function handler(req, res) {
 
   const existingUser = await User.findOne({ email: email });
   if (existingUser) {
-    res.status(422).json({ message: "User exists already!" });
+    res.json({ message: "User exists already!" });
     await db.disconnect();
     return;
   }
@@ -38,7 +38,7 @@ async function handler(req, res) {
 
   const user = await newUser.save();
   await db.disconnect();
-  res.status(201).json({
+  res.json({
     message: "Created user!",
     _id: user._id,
     name: user.name,
