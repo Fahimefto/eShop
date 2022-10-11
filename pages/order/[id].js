@@ -34,9 +34,6 @@ function OrderScreen() {
   });
   useEffect(() => {
     const fetchOrder = async () => {
-      if (!placeorder.auth) {
-        router.push("/login");
-      }
       try {
         dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(`/api/orders/${orderId}`);
@@ -95,7 +92,7 @@ function OrderScreen() {
               <h2 className="mb-2 text-lg font-bold">Payment Method</h2>
               <div>{paymentMethod}</div>
               {isPaid ? (
-                <div className="bg-emerald-200 mt-5 text-center p-2 text-emerald-700 font-semibold">
+                <div className="bg-emerald-200 mt-5 text-center p-2 text-green-700 font-semibold">
                   Paid at {paidAt}
                 </div>
               ) : (
