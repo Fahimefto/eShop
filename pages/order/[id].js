@@ -34,6 +34,9 @@ function OrderScreen() {
   });
   useEffect(() => {
     const fetchOrder = async () => {
+      if (!placeorder.auth) {
+        router.push("/login");
+      }
       try {
         dispatch({ type: "FETCH_REQUEST" });
         const { data } = await axios.get(`/api/orders/${orderId}`);

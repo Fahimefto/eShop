@@ -8,7 +8,7 @@ const handler = async (req, res) => {
   console.log(session);
   console.log(session.user);
   if (!session) {
-    return res.status(401).send("signin required");
+    return res.status(401).json("signin required");
   }
   console.log(session);
   const { user } = session;
@@ -20,6 +20,6 @@ const handler = async (req, res) => {
   });
 
   const order = await newOrder.save();
-  res.status(201).send(order);
+  res.status(201).json(order);
 };
 export default handler;

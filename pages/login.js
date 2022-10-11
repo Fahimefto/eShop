@@ -101,7 +101,7 @@ export default function login() {
         </div>
         <div className="mt-5 ">
           <div className="text-bold">
-            <Link href="/register">
+            <Link href={`/register?redirect=${redirect || "/"}`}>
               <a className="text-green-800 font-bold">
                 Don't have any Account? Register Account
               </a>
