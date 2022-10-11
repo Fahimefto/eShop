@@ -42,7 +42,7 @@ export default function Layout({ title, children }) {
                 <a className="text-md p-2">
                   Cart
                   {CartCount > 0 && (
-                    <span className="rounded-full ml-1 p-1 px-2 font-bold text-xs bg-red-500">
+                    <span className="rounded-full ml-2 px-[6px] py-[1px]  font-bold text-xs text-rose-800 bg-rose-300">
                       {CartCount}
                     </span>
                   )}

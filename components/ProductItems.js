@@ -20,10 +20,10 @@ export default function ProductItems({ product, addCartHandler }) {
             <h2 className="text-lg font-bold">{product.name}</h2>
           </a>
         </Link>
-        <p className="mb-2 text-sm">{product.brand}</p>
-        <p className="font-sans text-xs font-bold">{product.price} BDT</p>
+        <p className="mb-2 text-sm tracking-widest">{product.brand}</p>
+        <p className=" text-sm font-bold">{product.price} BDT</p>
         <button
-          className="primary-button bg-emerald-500 py-1 font-bold px-3 mt-3 shadow-2xl outline-none hover:bg-emerald-700 rounded-md active:bg-green-800"
+          className=" bg-emerald-500 py-3 font-bold px-3 mt-3 shadow-2xl outline-none hover:bg-emerald-700 rounded-md active:bg-green-800"
           type="button"
           onClick={() => addCartHandler(product)}
         >
