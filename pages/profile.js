@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
@@ -20,7 +20,7 @@ export default function ProfileScreen() {
   useEffect(() => {
     setValue("name", session.token.name);
     setValue("email", session.token.email);
-  }, [session.user, setValue]);
+  }, [session.token, setValue]);
 
   const submitHandler = async ({ name, email, password }) => {
     try {

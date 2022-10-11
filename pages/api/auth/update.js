@@ -13,7 +13,6 @@ async function handler(req, res) {
     return res.status(401).send({ message: "signin required" });
   }
 
-  const { user } = session;
   const { name, email, password } = req.body;
 
   if (
