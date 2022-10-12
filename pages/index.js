@@ -6,10 +6,11 @@ import { Store } from "../hooks/Store";
 import Product from "../models/Product";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 export default function Home({ products }) {
   const { state, dispatch } = useContext(Store);
-
+  const router = useRouter();
   const addCartHandler = async (product) => {
     const existItems = state.cart.CartItems.find(
       (x) => x.slug === product.slug
@@ -22,6 +23,7 @@ export default function Home({ products }) {
     } else {
       dispatch({ type: "ADD_ITEM", payload: { ...product, quantity } });
       toast.success("Item added to cart");
+      router.push("/cart");
     }
   };
   return (
