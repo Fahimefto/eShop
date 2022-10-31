@@ -2,20 +2,55 @@ import { SessionProvider, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { StoreProvider } from "../hooks/Store";
 import "../styles/globals.css";
+import { useState } from "react";
+import HashLoader from "react-spinners/HashLoader";
+import Router from "next/router";
+
+const override = {
+  position: "absolute",
+  color: "#31877c",
+  left: "50%",
+  top: "40%",
+  width: "100vw",
+  height: "100vh",
+  backRoundColor: "white",
+  transform: "translate(-50%, -50%)",
+};
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  let [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("#31877c");
+  Router.events.on("routeChangeStart", (url) => {
+    console.log("Router changing");
+    setLoading(true);
+  });
+  Router.events.on("routeChangeComplete", (url) => {
+    console.log("finised changing");
+    setLoading(false);
+  });
+
   return (
-    <SessionProvider session={session}>
-      <StoreProvider>
-        {Component.auth ? (
-          <Auth>
+    <>
+      {loading && (
+        <HashLoader
+          color="#0a6434"
+          loading={loading}
+          cssOverride={override}
+          size={80}
+        />
+      )}
+      <SessionProvider session={session}>
+        <StoreProvider>
+          {Component.auth ? (
+            <Auth>
+              <Component {...pageProps} />
+            </Auth>
+          ) : (
             <Component {...pageProps} />
-          </Auth>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </StoreProvider>
-    </SessionProvider>
+          )}
+        </StoreProvider>
+      </SessionProvider>
+    </>
   );
 }
 
