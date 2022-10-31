@@ -19,12 +19,12 @@ const override = {
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   let [loading, setLoading] = useState(false);
-  let [color, setColor] = useState("#31877c");
-  Router.events.on("routeChangeStart", (url) => {
+
+  Router.events.on("routeChangeStart", () => {
     console.log("Router changing");
     setLoading(true);
   });
-  Router.events.on("routeChangeComplete", (url) => {
+  Router.events.on("routeChangeComplete", () => {
     console.log("finised changing");
     setLoading(false);
   });
